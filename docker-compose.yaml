@@ -5,10 +5,14 @@ services:
       dockerfile: Dockerfile
     image: happielearning/mongo:1.0.0
     container_name: mongo
+    volumes:
+      - mongodb:/data/db
   
   redis:
     image: redis:7
     container_name: redis
+    volumes:
+      - redis:/data
 
   mysql:
     build:
@@ -16,6 +20,8 @@ services:
       dockerfile: Dockerfile
     image: happielearning/mysql:1.0.0
     container_name: mysql
+    volumes:
+      - mysql:/var/lib/mysql
 
   rabbitmq:
     image: rabbitmq:3
@@ -23,6 +29,8 @@ services:
       RABBITMQ_DEFAULT_USER: "roboshop"
       RABBITMQ_DEFAULT_PASS: "roboshop123"
     container_name: rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
 
   catalogue:
     build:
@@ -101,3 +109,9 @@ networks:
     driver: bridge
     name: roboshop
     external: false # if set to true, we have to create manually using `docker network create roboshop` before running the compose file
+
+volumes:
+  mongodb:
+  redis:
+  mysql:
+  rabbitmq:
