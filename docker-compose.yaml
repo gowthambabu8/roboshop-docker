@@ -9,7 +9,7 @@ services:
       - mongodb
   mongodb:
     build:
-      context: ./mongo
+      context: ./mongodb
       dockerfile: Dockerfile
     image: happielearning/mongo:1.0.0
     container_name: mongo
