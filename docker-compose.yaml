@@ -1,14 +1,16 @@
 services:
   catalogue:
     build:
-      dockerfile: catalogue.Dockerfile
+      context: ./catalogue
+      dockerfile: Dockerfile
     image: happielearning/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
   mongodb:
     build:
-      dockerfile: mongodb.Dockerfile
+      context: ./mongo
+      dockerfile: Dockerfile
     image: happielearning/mongo:1.0.0
     container_name: mongo
 
