@@ -5,4 +5,4 @@ COPY payment.ini .
 COPY requirements.txt .
 COPY *.py .
 RUN pip3 install -r requirements.txt
-CMD ["uwsgi","--init","payment.ini"]
+CMD ["uwsgi","--ini","payment.ini"]
