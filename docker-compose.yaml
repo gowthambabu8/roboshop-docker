@@ -2,7 +2,7 @@ services:
   catalogue:
     build:
       dockerfile: catalogue.Dockerfile
-    image: happiielearning/catalogue:1.0.0
+    image: happielearning/catalogue:1.0.0
     container_name: catalogue
     depends_on:
       - mongodb
