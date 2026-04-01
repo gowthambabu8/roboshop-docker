@@ -10,6 +10,13 @@ services:
     image: redis:7
     container_name: redis
 
+  mysql:
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    image: happielearning/mysql:1.0.0
+    container_name: mysql
+    
   catalogue:
     build:
       context: ./catalogue
@@ -50,7 +57,7 @@ services:
       - catalogue
       - user
       - cart
-      
+
 networks:
   default:
     driver: bridge
