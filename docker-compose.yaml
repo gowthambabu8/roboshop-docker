@@ -1,0 +1,19 @@
+services:
+  catalogue:
+    build:
+      dockerfile: catalogue.Dockerfile
+    image: happiielearning/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+      - mongodb
+  mongodb:
+    build:
+      dockerfile: mongodb.Dockerfile
+    image: happielearning/mongo:1.0.0
+    container_name: mongo
+
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false # if set to true, we have to create manually using `docker network create roboshop` before running the compose file
