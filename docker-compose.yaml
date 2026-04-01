@@ -14,6 +14,16 @@ services:
     image: happielearning/mongo:1.0.0
     container_name: mongo
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: happielearning/frontend:1.0.0
+    container_name: frontend
+    ports:
+      - 80:80
+    depends_on:
+      - catalogue
 networks:
   default:
     driver: bridge
