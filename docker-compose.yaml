@@ -41,6 +41,7 @@ services:
     container_name: user
     depends_on:
       - redis
+      - mongodb
   
   cart:
     build:
@@ -92,6 +93,8 @@ services:
       - catalogue
       - user
       - cart
+      - payment
+      - shipping
 
 networks:
   default:
