@@ -1,10 +1,13 @@
-FROM node:20
-WORKDIR /app
+FROM FROM node:20.20.2-alpine3.23 AS builder
 COPY package.json .
 COPY *.js .
 RUN npm install
-ENV REDIS_HOST="redis" \
-    CATALOGUE_HOST="catalogue" \
-    CATALOGUE_PORT=8080
 
+FROM FROM node:20.20.2-alpine3.23
+WORKDIR /app
+EXPOSE 8080
+COPY --from=builder /app /app
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+RUN chown -R roboshop:roboshop /app
+USER roboshop
 CMD ["node","server.js"]
