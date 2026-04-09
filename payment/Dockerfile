@@ -11,6 +11,6 @@ WORKDIR /app
 RUN apk add --no-cache pcre-dev
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 RUN chown -R roboshop:roboshop /app
-COPY --from=builder /usr/local
+COPY --from=builder /install /usr/local
 COPY --chown roboshop:roboshop payment.ini *.py requirements.txt .
 CMD ["uwsgi","--ini","payment.ini"]
