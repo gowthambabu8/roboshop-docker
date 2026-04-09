@@ -1,4 +1,5 @@
 FROM node:20.20.2-alpine3.23 AS builder
+WORKDIR /app
 COPY package.json .
 COPY *.js .
 RUN npm install
