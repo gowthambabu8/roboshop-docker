@@ -10,6 +10,7 @@ EXPOSE 8080
 COPY --from=builder /app /app
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 RUN chown -R roboshop:roboshop /app
-USER roboshop
+--USER roboshop
+USER root
 CMD ["server.js"]
 ENTRYPOINT ["node"]
